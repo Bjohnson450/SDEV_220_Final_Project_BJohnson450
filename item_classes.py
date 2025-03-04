@@ -16,7 +16,7 @@ class Item:
         self.location = location
 
     def display_info(self):
-        return f"Item: {self.name}\nLocation: {self.location}"
+        return f"Item: {self.name} \nLocation: {self.location}"
 
 class Soup(Item):
     def __init__(self, name, soup_type, size, location):

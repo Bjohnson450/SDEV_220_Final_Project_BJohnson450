@@ -1,0 +1,6 @@
+Item: Apple
+Location: 
+Aisle: Fresh Produce 
+Shelf: main 
+Section: right
+

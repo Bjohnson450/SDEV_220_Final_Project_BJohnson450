@@ -1,0 +1,6 @@
+Item: Orange
+Location: 
+Aisle: Fresh Produce 
+Shelf:  
+Section: front
+

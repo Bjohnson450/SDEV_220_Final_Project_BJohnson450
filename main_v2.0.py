@@ -12,7 +12,7 @@ def sanitize_filename(item_name):
 
 # Function to save item details to a file
 def save_to_file(items):
-    base_path = r"C:\Users\User\Desktop\Python projects\Final Project\Item_locations"  # Base directory to save items. Chancge Path as necessary
+    base_path = os.path.join(os.path.dirname(__file__), "Item_locations")
     os.makedirs(base_path, exist_ok=True)
     for item in items:
         item_name = item.name
@@ -21,14 +21,12 @@ def save_to_file(items):
         with open(item_file_path, "w") as file:
             file.write(f"{item.display_info()}\n\n")
 
-# Function to get location input from the user
 def get_location_input():
+    department = department_entry.get()
     aisle = aisle_entry.get()
     shelf = shelf_entry.get()
-    section = section_var.get()
-    return Location(aisle, shelf, section)
+    return Location(department, aisle, shelf)
 
-# Function to get the item input based on the selected item type
 def get_item_input():
     choice = item_type_var.get()
     name = name_entry.get()
@@ -63,19 +61,16 @@ def get_item_input():
         fat_content = fat_content_entry.get()
         return Dairy(name, fat_content, location)
 
-# Function to handle the form submission
 def submit_item():
     item = get_item_input()
     if item:
         items.append(item)
         messagebox.showinfo("Success", "Item added successfully!")
 
-# Function to save all items
 def save_items():
     save_to_file(items)
     messagebox.showinfo("Saved", "Items have been saved to files!")
 
-# Function to update the visible fields based on the selected item type
 def update_fields(event=None):
     choice = item_type_var.get()
 
@@ -92,7 +87,6 @@ def update_fields(event=None):
     fat_content_label.grid_forget()
     fat_content_entry.grid_forget()
 
-    # Show fields based on the selected item type
     if choice == "Soup":
         soup_type_label.grid(row=2, column=0, padx=10, pady=5)
         soup_type_entry.grid(row=2, column=1, padx=10, pady=5)
@@ -118,7 +112,6 @@ def update_fields(event=None):
 root = tk.Tk()
 root.title("Item Entry Form")
 
-# List to store items
 items = []
 
 # Item Type Selection
@@ -159,26 +152,20 @@ fat_content_label = tk.Label(root, text="Fat Content:")
 fat_content_entry = tk.Entry(root)
 
 # Location Inputs
+department_label = tk.Label(root, text="Department:")
+department_label.grid(row=8, column=0, padx=10, pady=5)
+department_entry = tk.Entry(root)
+department_entry.grid(row=8, column=1, padx=10,pady=5)
+
 aisle_label = tk.Label(root, text="Aisle:")
-aisle_label.grid(row=8, column=0, padx=10, pady=5)
+aisle_label.grid(row=9, column=0, padx=10, pady=5)
 aisle_entry = tk.Entry(root)
-aisle_entry.grid(row=8, column=1, padx=10, pady=5)
+aisle_entry.grid(row=9, column=1, padx=10, pady=5)
 
 shelf_label = tk.Label(root, text="Shelf:")
-shelf_label.grid(row=9, column=0, padx=10, pady=5)
+shelf_label.grid(row=10, column=0, padx=10, pady=5)
 shelf_entry = tk.Entry(root)
-shelf_entry.grid(row=9, column=1, padx=10, pady=5)
-
-section_label = tk.Label(root, text="Section:")
-section_label.grid(row=10, column=0, padx=10, pady=5)
-section_var = tk.StringVar()
-section_var.set("right")
-section_right = tk.Radiobutton(root, text="Right", variable=section_var, value="right")
-section_right.grid(row=10, column=1, padx=10, pady=5, sticky="w")
-section_left = tk.Radiobutton(root, text="Left", variable=section_var, value="left")
-section_left.grid(row=10, column=2, padx=10, pady=5, sticky="w")
-section_front = tk.Radiobutton(root, text="Front", variable=section_var, value="front")
-section_front.grid(row=10, column=3, padx=10, pady=5, sticky="w")
+shelf_entry.grid(row=10, column=1, padx=10, pady=5)
 
 # Submit button
 submit_button = tk.Button(root, text="Add Item", command=submit_item)

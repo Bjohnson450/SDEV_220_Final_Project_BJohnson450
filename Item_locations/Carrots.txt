@@ -1,0 +1,7 @@
+Item: Carrots 
+Location 
+-----------------
+Department: Fresh Produce 
+Aisle: 1 
+Shelf: Fresh vegetables section, furthest from the right.
+

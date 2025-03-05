@@ -1,0 +1,7 @@
+Item: Cucumbers 
+Location 
+-----------------
+Department: Fresh Produce 
+Aisle: 1 
+Shelf: Fresh vegetables section, next to the carrots.
+

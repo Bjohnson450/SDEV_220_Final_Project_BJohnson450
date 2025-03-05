@@ -1,0 +1,9 @@
+Item: Campbell's (example) 
+Location 
+-----------------
+Department: Soup 
+Aisle: 5 
+Shelf: 2nd shelf fromt the bottom, canned soup section.
+Flavor: Chicken
+Size: 2ml
+

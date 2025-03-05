@@ -1,14 +1,14 @@
 class Location:
-    def __init__(self, aisle, shelf, section):
+    def __init__(self, department, aisle, shelf):
+        self.department = department
         self.aisle = aisle
         self.shelf = shelf
-        self.section = section
 
     def display_location(self):
-        return f"Location: Aisle {self.aisle}, Shelf {self.shelf}, Section {self.section}"
+        return f"Location: Department {self.department}, Aisle {self.aisle}, Shelf {self.shelf}"
     
     def __str__(self):
-        return f"\nAisle: {self.aisle} \nShelf: {self.shelf} \nSection: {self.section}"
+        return f"\nDepartment: {self.department} \nAisle: {self.aisle} \nShelf: {self.shelf}"
 
 class Item:
     def __init__(self, name, location):
@@ -16,7 +16,7 @@ class Item:
         self.location = location
 
     def display_info(self):
-        return f"Item: {self.name} \nLocation: {self.location}"
+        return f"Item: {self.name} \nLocation \n-----------------{self.location}"
 
 class Soup(Item):
     def __init__(self, name, soup_type, size, location):
@@ -65,7 +65,7 @@ class ChipsAndSnacks(Item):
         self.size = size
 
     def display_info(self):
-        return f"{super().display_info()}\nFlavor: {self.flavor}\nSize: {self.size}"
+        return f"{super().display_info()}\nFlavor: {self.flavor}\nSize: {self.size}oz"
 
 class Dairy(Item):
     def __init__(self, name, fat_content, location):
@@ -73,4 +73,4 @@ class Dairy(Item):
         self.fat_content = fat_content
 
     def display_info(self):
-        return f"{super().display_info()}\nFat Content: {self.fat_content}%"
+        return f"{super().display_info()}\nFat Content: {self.fat_content}"
